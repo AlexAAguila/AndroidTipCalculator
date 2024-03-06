@@ -28,6 +28,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.androidtipcalculator.ui.theme.AndroidTipCalculatorTheme
+import java.text.NumberFormat
 
 
 class MainActivity : ComponentActivity() {
@@ -85,4 +86,10 @@ fun DefaultPreview() {
     }
 }
 
-
+private fun calculateTip(
+    amount: Double,
+    tipPercent: Double = 15.0
+): String {
+    val tip = tipPercent / 100 * amount
+    return NumberFormat.getCurrencyInstance().format(tip)
+}
