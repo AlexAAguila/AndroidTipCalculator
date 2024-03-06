@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Android Tip Calculator</string>
+    <string name="tip_calculator_heading">Cost of Service</string>
+    <string name="service_cost">Calculate Tip</string>
+    <string name="tip_amount">Tip amount: %s</string>
 </resources>
