@@ -56,6 +56,7 @@ fun TipCalculatorScreen() {
     var serviceCostAmountInput by remember { mutableStateOf("") }
     val amount = serviceCostAmountInput.toDoubleOrNull() ?: 0.0
     val tip = calculateTip(amount)
+    val total = calculateTotalAmount(amount, 15.0)
 
     Column(
         modifier = Modifier.padding(32.dp),
@@ -79,7 +80,7 @@ fun TipCalculatorScreen() {
             fontWeight = FontWeight.Bold
         )
         Text(
-            text = stringResource(R.string.total_amount, tip),
+            text = stringResource(R.string.total_amount, total),
             modifier = Modifier.align(Alignment.CenterHorizontally),
             fontSize = 20.sp,
             fontWeight = FontWeight.Bold
@@ -108,6 +109,13 @@ private fun calculateTip(
 ): String {
     val tip = tipPercent / 100 * amount
     return NumberFormat.getCurrencyInstance().format(tip)
+}
+private fun calculateTotalAmount(
+    amount: Double,
+    tipAmount: Double
+): String {
+    val totalAmount = ((tipAmount / 100 * amount) + amount)
+    return NumberFormat.getCurrencyInstance().format(totalAmount)
 }
 
 @Preview(showBackground = true)
